@@ -29,18 +29,12 @@ public class Main {
         return choice;
     }
 
-    public static String getFumbleDescriptor(boolean isAlly){
-        if(isAlly)
+    public static String getFumbleDescriptor(){
             return Game.ANSI_RED + " [FUMBLE] " + Game.ANSI_RESET;
-        else
-            return Game.ANSI_GREEN + " [FUMBLE] " + Game.ANSI_RESET;
     }
 
-    public static String getCriticalDescriptor(boolean isAlly){
-        if(isAlly)
-            return Game.ANSI_GREEN + " [FUMBLE] " + Game.ANSI_RESET;
-        else
-            return Game.ANSI_RED + " [FUMBLE] " + Game.ANSI_RESET;
+    public static String getCriticalDescriptor(){
+            return Game.ANSI_GREEN + " [CRITICAL] " + Game.ANSI_RESET;
     }
 
     public static void main(String[] args) {

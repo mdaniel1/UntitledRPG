@@ -44,4 +44,9 @@ public abstract class Spell {
     public void setType(SpellType type) {
         this.type = type;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Spell && (this.getRawName().equals(((Spell) obj).getRawName()));
+    }
 }

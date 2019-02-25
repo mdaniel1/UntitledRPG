@@ -139,21 +139,29 @@ public class CharacterRPG {
                                     + " for " + Game.ANSI_RED + damageRoll + Game.ANSI_RESET + " damage.");
                             calculateDamage(c, damageRoll);
                         }
-                        else{ //MISS
-                            System.out.println(this.getName() + " misses " + c.getName() + " and inflicts no damage ");
+                        else{ //OR MISS, I GUESS THEY NEVER MISS HUH.
+                            System.out.println(Game.ANSI_YELLOW + getName() + Game.ANSI_RESET
+                                    + " misses "
+                                    + Game.ANSI_YELLOW + c.getName() + Game.ANSI_RESET
+                                    + " and inflicts no damage ");
                         }
                     }
                     else{ //CRIT
                         int damageRoll = this.getWeapon().getDamage() + this.bonusDamage;
                         damageRoll*=2;
-                        System.out.println(Game.ANSI_YELLOW + "CRITICAL ! " + Game.ANSI_RESET + this.getName()
-                                + " managed to hit " + c.getName() + " for " + Game.ANSI_RED + damageRoll + Game.ANSI_RESET + " damage.");
+                        System.out.println(Main.getCriticalDescriptor() + Game.ANSI_YELLOW + getName() + Game.ANSI_RESET
+                                + " managed to hit " + Game.ANSI_YELLOW + c.getName() + Game.ANSI_RESET
+                                + " for " + Game.ANSI_RED + damageRoll + Game.ANSI_RESET + " damage.");
+
                         calculateDamage(c, damageRoll);
                     }
                 }
                 else{ //FUMBLE (oh no)
                     int damageRoll = this.getWeapon().getDamage() + this.bonusDamage;
-                    System.out.println(Game.ANSI_RED + "FUMBLE ! " + this.getName() + " hits themselves for " + damageRoll + " damage." + Game.ANSI_RESET);
+                    System.out.println(Main.getFumbleDescriptor() + Game.ANSI_YELLOW + getName() + Game.ANSI_RESET
+                            + " hits themselves for "
+                            +Game.ANSI_RED + damageRoll + Game.ANSI_RESET + " damage.");
+
                     calculateDamage(this, damageRoll);
                 }
             }
@@ -166,7 +174,7 @@ public class CharacterRPG {
     private void calculateDamage(CharacterRPG c, int damageRoll) {
         c.setHP(c.getHP() - damageRoll);
         if(c.getHP() <= 0){
-            System.out.println(c.getName() + " is dead.");
+            System.out.println(Game.ANSI_YELLOW + c.getName() + Game.ANSI_RESET + " is dead.");
             c.isAlive = false;
         }
     }
@@ -187,6 +195,14 @@ public class CharacterRPG {
         }
 
         return false;
+    }
+
+    public Spell getSpell(Spell spell){
+        for(Spell s : spells){
+            if(s.equals(spell))
+                return s;
+        }
+        return null;
     }
 
     void LevelUp(int choice){

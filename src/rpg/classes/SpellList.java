@@ -16,13 +16,13 @@ public class SpellList {
 
             switch(diceRoll){
                 case 1:
-                    System.out.println(Main.getFumbleDescriptor(true) + Game.ANSI_YELLOW + c1.getName() + Game.ANSI_RESET
+                    System.out.println(Main.getFumbleDescriptor() + Game.ANSI_YELLOW + c1.getName() + Game.ANSI_RESET
                             + " tried to cast " + this.getName() + " but failed.\n"
                             + Game.ANSI_RED + "No health restored." + Game.ANSI_RESET);
                     break;
                 case 20:
                     restoredHP *= 2;
-                    System.out.println(Main.getCriticalDescriptor(true) + Game.ANSI_YELLOW + c1.getName() + Game.ANSI_RESET
+                    System.out.println(Main.getCriticalDescriptor() + Game.ANSI_YELLOW + c1.getName() + Game.ANSI_RESET
                             + " casts " + this.getName() + " and restores "
                             + Game.ANSI_GREEN + restoredHP + " health." + Game.ANSI_RESET);
                     c1.setHP(c1.getHP() + restoredHP);
@@ -55,14 +55,14 @@ public class SpellList {
 
             switch(diceRoll){
                 case 1:
-                    System.out.println(Main.getFumbleDescriptor(true) + Game.ANSI_YELLOW + c1.getName() + Game.ANSI_RESET
+                    System.out.println(Main.getFumbleDescriptor() + Game.ANSI_YELLOW + c1.getName() + Game.ANSI_RESET
                             + " tried to cast " + this.getName() + " on " + Game.ANSI_YELLOW + c2.getName() + Game.ANSI_RESET
                             + "but failed.\n"
                             + Game.ANSI_RED + "No health restored." + Game.ANSI_RESET);
                     break;
                 case 20:
                     restoredHP *= 2;
-                    System.out.println(Main.getCriticalDescriptor(true) + Game.ANSI_YELLOW + c1.getName() + Game.ANSI_RESET
+                    System.out.println(Main.getCriticalDescriptor() + Game.ANSI_YELLOW + c1.getName() + Game.ANSI_RESET
                             + " casts " + this.getName() + " on " + Game.ANSI_YELLOW + c2.getName() + Game.ANSI_RESET + " and restores "
                             + Game.ANSI_GREEN + restoredHP + " health." + Game.ANSI_RESET);
                     c2.setHP(c2.getHP() + restoredHP);
