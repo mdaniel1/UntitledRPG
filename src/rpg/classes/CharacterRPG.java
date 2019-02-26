@@ -6,6 +6,7 @@ import rpg.exceptions.NoSuchItemException;
 import rpg.main.Game;
 import rpg.main.Main;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -31,6 +32,7 @@ public class CharacterRPG {
     private int bonusHitChance = 0;
     private String pronoun; //He, she, they, etc...
     private String article; //a, the, ...
+    private ArrayList<Item> lootTable = new ArrayList<Item>();
 
 
     public CharacterRPG(String name, int HP, int maxHP, int armor, String pronoun, String article){
@@ -130,6 +132,22 @@ public class CharacterRPG {
 
     public void setArticle(String article) {
         this.article = article;
+    }
+
+    public ArrayList<Item> getLootTable() {
+        return lootTable;
+    }
+
+    public void setLootTable(ArrayList<Item> lootTable) {
+        this.lootTable = lootTable;
+    }
+
+    public int getInternalId() {
+        return internalId;
+    }
+
+    public void setInternalId(int internalId) {
+        this.internalId = internalId;
     }
 
     void Attack(CharacterRPG c, boolean forceFumble){
@@ -319,16 +337,12 @@ public class CharacterRPG {
             System.out.println(Game.ANSI_YELLOW + this.getName() + Game.ANSI_RESET + " doesn't have any " + Game.ANSI_PURPLE + i.getName() + Game.ANSI_RESET);
     }
 
+    public Item getRandomizedLoot(){
+        return lootTable.get(Main.dice.nextInt(lootTable.size()));
+    }
+
     void LevelUp(int choice){
 
-    }
-
-    public int getInternalId() {
-        return internalId;
-    }
-
-    public void setInternalId(int internalId) {
-        this.internalId = internalId;
     }
 }
 

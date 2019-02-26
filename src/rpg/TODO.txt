@@ -4,3 +4,4 @@ Exp
 Level ups
 Battle manager 1v1
 Battle manager group vs group
+bonus characteristics to weapons
