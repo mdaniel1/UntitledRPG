@@ -12,6 +12,8 @@ import java.util.HashSet;
 public class CharacterRPG {
 
     //PRIMARY CHARACTERISTICS
+    private static int nextId = 0;
+    private int internalId;
     private String name;
     private int HP;
     private int maxHP;
@@ -20,6 +22,8 @@ public class CharacterRPG {
     private int level = 1;
     boolean isAlive = true;
     private int money = 0;
+    private HashSet<Spell> spells = new HashSet<Spell>();
+    private HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();
 
     //SECONDARY CHARACTERISTICS
     private int bonusDamage = 0;
@@ -27,8 +31,7 @@ public class CharacterRPG {
     private int bonusHitChance = 0;
     private String pronoun; //He, she, they, etc...
     private String article; //a, the, ...
-    private HashSet<Spell> spells = new HashSet<Spell>();
-    private HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();
+
 
     public CharacterRPG(String name, int HP, int maxHP, int armor, String pronoun, String article){
         setName(name);
@@ -38,6 +41,7 @@ public class CharacterRPG {
         setPronoun(pronoun);
         setArticle(article);
         setWeapon(new Weapon("Fists", DiceType.D4, 20, 1));
+        setInternalId(++nextId);
     }
 
 
@@ -317,6 +321,14 @@ public class CharacterRPG {
 
     void LevelUp(int choice){
 
+    }
+
+    public int getInternalId() {
+        return internalId;
+    }
+
+    public void setInternalId(int internalId) {
+        this.internalId = internalId;
     }
 }
 
