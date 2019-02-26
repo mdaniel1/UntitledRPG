@@ -2,9 +2,11 @@ package rpg.classes;
 
 import rpg.enums.DiceType;
 import rpg.enums.SpellType;
+import rpg.exceptions.NoSuchItemException;
 import rpg.main.Game;
 import rpg.main.Main;
 
+import java.util.HashMap;
 import java.util.HashSet;
 
 public class CharacterRPG {
@@ -17,6 +19,7 @@ public class CharacterRPG {
     private int armor;
     private int level = 1;
     boolean isAlive = true;
+    private int money = 0;
 
     //SECONDARY CHARACTERISTICS
     private int bonusDamage = 0;
@@ -24,7 +27,8 @@ public class CharacterRPG {
     private int bonusHitChance = 0;
     private String pronoun; //He, she, they, etc...
     private String article; //a, the, ...
-    private HashSet<Spell> spells = new HashSet<>();
+    private HashSet<Spell> spells = new HashSet<Spell>();
+    private HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();
 
     public CharacterRPG(String name, int HP, int maxHP, int armor, String pronoun, String article){
         setName(name);
@@ -188,6 +192,15 @@ public class CharacterRPG {
         return false;
     }
 
+    public boolean hasSpell(Spell spell){
+        for(Spell s : spells){
+            if(s.equals(spell))
+                return true;
+        }
+
+        return false;
+    }
+
     public boolean hasAnySpell(SpellType type){
         for(Spell s : spells){
             if(s.getType() == type)
@@ -221,6 +234,85 @@ public class CharacterRPG {
         catch(Exception e){
 
         }
+    }
+
+    public boolean hasItem(String rawName){
+        for(Item i : inventory.keySet()){
+            if(i.getRawName().equals(rawName))
+                return true;
+        }
+
+        return false;
+    }
+
+    public boolean hasItem(Item item){
+        return inventory.containsKey(item);
+    }
+
+    public boolean isInventoryEmpty(){
+        return inventory.size() == 0;
+    }
+
+    public Item getItem(String rawName) throws NoSuchItemException {
+        for(Item i : inventory.keySet()){
+            if(i.getRawName().equals(rawName))
+                return i;
+        }
+
+        throw new NoSuchItemException("Not enough " + rawName);
+    }
+
+    public Item getItem(Item item) throws NoSuchItemException {
+        for(Item i : inventory.keySet()){
+            if(i.equals(item))
+                return i;
+        }
+
+        throw new NoSuchItemException("Not enough " + item.getName() + ("s"));
+    }
+
+    public void addItem(Item i){
+        System.out.println(Game.ANSI_YELLOW + this.getName() + Game.ANSI_RESET + " received "
+                + Game.ANSI_PURPLE + i.getArticle() + " " + i.getName() + Game.ANSI_RESET);
+        if(hasItem(i)){
+            int nb = inventory.get(i);
+            inventory.put(i, ++nb);
+        }
+        else{
+            inventory.put(i, 1);
+        }
+    }
+
+    public void useItem(Item i){
+        if(hasItem(i)){
+            int nb = inventory.get(i);
+            nb -= 1;
+            i.applyEffects(this);
+            if(nb <= 0){
+                inventory.remove(i);
+            }
+            else{
+                inventory.put(i, nb);
+            }
+        }
+        else
+            System.out.println(Game.ANSI_YELLOW + this.getName() + Game.ANSI_RESET + " doesn't have any " + Game.ANSI_PURPLE + i.getName() + Game.ANSI_RESET);
+    }
+
+    public void useItem(Item i, CharacterRPG target){
+        if(hasItem(i)){
+            int nb = inventory.get(i);
+            nb--;
+            i.applyEffects(this, target);
+            if(nb <= 0){
+                inventory.remove(i);
+            }
+            else{
+                inventory.put(i, nb);
+            }
+        }
+        else
+            System.out.println(Game.ANSI_YELLOW + this.getName() + Game.ANSI_RESET + " doesn't have any " + Game.ANSI_PURPLE + i.getName() + Game.ANSI_RESET);
     }
 
     void LevelUp(int choice){

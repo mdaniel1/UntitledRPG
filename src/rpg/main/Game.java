@@ -1,7 +1,10 @@
 package rpg.main;
 
 import rpg.classes.CharacterRPG;
+import rpg.classes.Item;
+import rpg.classes.ItemList;
 import rpg.classes.SpellList;
+import rpg.exceptions.NoSuchItemException;
 
 public class Game {
     public static String ANSI_RESET = "\u001B[0m";
@@ -26,14 +29,22 @@ public class Game {
         if(coloursEnabled == 1)
             enableColors();
 
-        CharacterRPG test = new CharacterRPG("Test", 30, 50, 1, "He", "");
-        CharacterRPG test2 = new CharacterRPG("Test 2", 30, 50, 1, "He", "");
+        CharacterRPG test = new CharacterRPG("Arthur", 30, 50, 1, "He", "");
+        CharacterRPG test2 = new CharacterRPG("Perceval", 30, 50, 1, "He", "");
         test.AddSpell(SpellList.HEAL_BASIC);
         if(test.hasSpell("W_SPELL_LIGHT_HEAL")){
             test.getSpell("W_SPELL_LIGHT_HEAL").Cast(test);
             test.getSpell("W_SPELL_LIGHT_HEAL").Cast(test, test2);
         }
-
+        test.addItem(ItemList.SMALL_HEALTH_POTION);
+        //test.addItem(ItemList.SMALL_HEALTH_POTION);
+        try{
+            test.useItem(test.getItem(ItemList.SMALL_HEALTH_POTION));
+            test.useItem(test.getItem("I_S_HEALTH_POTION"), test2);
+        }
+        catch(NoSuchItemException e){
+            System.out.println(e.getMessage());
+        }
     }
 
 
