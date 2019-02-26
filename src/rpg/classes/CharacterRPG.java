@@ -205,6 +205,24 @@ public class CharacterRPG {
         return null;
     }
 
+    public Spell getSpell(String rawName){
+        for(Spell s : spells){
+            if(s.getRawName().equals(rawName))
+                return s;
+        }
+        return null;
+    }
+
+    public void AddSpell(Spell s){
+        try{
+            System.out.println(Game.ANSI_YELLOW + this.getName() + Game.ANSI_RESET + " learned " + Game.ANSI_CYAN + s.getName() + Game.ANSI_RESET);
+            spells.add(s);
+        }
+        catch(Exception e){
+
+        }
+    }
+
     void LevelUp(int choice){
 
     }

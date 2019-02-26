@@ -1,5 +1,8 @@
 package rpg.main;
 
+import rpg.classes.CharacterRPG;
+import rpg.classes.SpellList;
+
 public class Game {
     public static String ANSI_RESET = "\u001B[0m";
     public static String ANSI_BLACK = "\u001B[30m";
@@ -12,12 +15,25 @@ public class Game {
     public static String ANSI_WHITE = "\u001B[37m";
 
     public Game(){
+        Start();
+    }
+
+    public void Start(){
         disableColors();
 
         System.out.println("Do you wish to enable colours?\n1) Yes\n2) No");
         int coloursEnabled = Main.getChoice(1,2);
         if(coloursEnabled == 1)
             enableColors();
+
+        CharacterRPG test = new CharacterRPG("Test", 30, 50, 1, "He", "");
+        CharacterRPG test2 = new CharacterRPG("Test 2", 30, 50, 1, "He", "");
+        test.AddSpell(SpellList.HEAL_BASIC);
+        if(test.hasSpell("W_SPELL_LIGHT_HEAL")){
+            test.getSpell("W_SPELL_LIGHT_HEAL").Cast(test);
+            test.getSpell("W_SPELL_LIGHT_HEAL").Cast(test, test2);
+        }
+
     }
 
 

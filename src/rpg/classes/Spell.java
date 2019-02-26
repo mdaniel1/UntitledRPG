@@ -41,6 +41,14 @@ public abstract class Spell {
         return type;
     }
 
+    public void Cast(CharacterRPG c1){
+        effects(c1);
+    }
+
+    public void Cast(CharacterRPG c1, CharacterRPG c2){
+        effects(c1, c2);
+    }
+
     public void setType(SpellType type) {
         this.type = type;
     }
