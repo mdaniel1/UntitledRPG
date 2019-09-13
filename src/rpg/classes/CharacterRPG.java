@@ -21,20 +21,23 @@ public class CharacterRPG {
     private Weapon weapon;
     private int armor;
     private int level = 1;
-    boolean isAlive = true;
+    public boolean isAlive = true;
     private int money = 0;
-    private HashSet<Spell> spells = new HashSet<Spell>();
-    private HashMap<Item, Integer> inventory = new HashMap<Item, Integer>();
 
+    private HashSet<Spell> spells = new HashSet<>();
+
+    private HashMap<Item, Integer> inventory = new HashMap<>();
     //SECONDARY CHARACTERISTICS
+
     private int bonusDamage = 0;
     private int bonusHeal = 0;
     private int bonusHitChance = 0;
+    private int temporaryArmor = 0;
+
     private String pronoun; //He, she, they, etc...
+
     private String article; //a, the, ...
-    private ArrayList<Item> lootTable = new ArrayList<Item>();
-
-
+    private ArrayList<Item> lootTable = new ArrayList<>();
     public CharacterRPG(String name, int HP, int maxHP, int armor, String pronoun, String article){
         setName(name);
         setHP(HP);
@@ -47,18 +50,18 @@ public class CharacterRPG {
     }
 
 
-    String getName() {
+    public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
 
-    int getHP() {
+    public int getHP() {
         return HP;
     }
-
-    void setHP(int HP) {
+    public void setHP(int HP) {
         this.HP = HP;
     }
 
@@ -70,23 +73,31 @@ public class CharacterRPG {
         this.weapon = weapon;
     }
 
-    private int getArmor() {
+    public int getArmor() {
         return armor;
     }
 
-    void setArmor(int armor) {
+    public void setArmor(int armor) {
         this.armor = armor;
     }
 
-    int getLevel() {
+    public int getTemporaryArmor() {
+        return temporaryArmor;
+    }
+
+    public void setTemporaryArmor(int temporaryArmor) {
+        this.temporaryArmor = temporaryArmor;
+    }
+
+    public int getLevel() {
         return level;
     }
 
-    void setLevel(int level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
-    int getMaxHP() {
+    public int getMaxHP() {
         return maxHP;
     }
 
@@ -150,13 +161,13 @@ public class CharacterRPG {
         this.internalId = internalId;
     }
 
-    void Attack(CharacterRPG c, boolean forceFumble){
+    public void Attack(CharacterRPG c, boolean forceFumble){
         if(c != null){
             if(c != this){
                 int diceRoll = Main.rollDice(DiceType.D20) + this.bonusHitChance;
                 if(diceRoll != 1 && !forceFumble){
                     if(diceRoll < this.getWeapon().getCritValue()){
-                        if(c.getArmor() <= diceRoll) //HIT
+                        if(c.getArmor() + c.temporaryArmor <= diceRoll) //HIT
                         {
                             int damageRoll = this.getWeapon().getDamage() + this.bonusDamage;
                             System.out.println(Game.ANSI_YELLOW + getName() + Game.ANSI_RESET
@@ -185,7 +196,7 @@ public class CharacterRPG {
                 else{ //FUMBLE (oh no)
                     int damageRoll = this.getWeapon().getDamage() + this.bonusDamage;
                     System.out.println(Main.getFumbleDescriptor() + Game.ANSI_YELLOW + getName() + Game.ANSI_RESET
-                            + " hits themselves for "
+                            + " hits " + (this.getPronoun().toLowerCase().equals("he") ? "himself" : this.getPronoun().toLowerCase().equals("she") ? "herself" : "themselves") + " for "
                             +Game.ANSI_RED + damageRoll + Game.ANSI_RESET + " damage.");
 
                     calculateDamage(this, damageRoll);
@@ -248,7 +259,7 @@ public class CharacterRPG {
         return null;
     }
 
-    public void AddSpell(Spell s){
+    public void addSpell(Spell s){
         try{
             System.out.println(Game.ANSI_YELLOW + this.getName() + Game.ANSI_RESET + " learned " + Game.ANSI_CYAN + s.getName() + Game.ANSI_RESET);
             spells.add(s);
@@ -256,6 +267,14 @@ public class CharacterRPG {
         catch(Exception e){
 
         }
+    }
+
+    public HashSet<Spell> getSpells() {
+        return spells;
+    }
+
+    public HashMap<Item, Integer> getInventory(){
+        return inventory;
     }
 
     public boolean hasItem(String rawName){
@@ -272,7 +291,7 @@ public class CharacterRPG {
     }
 
     public boolean isInventoryEmpty(){
-        return inventory.size() == 0;
+        return inventory.isEmpty();
     }
 
     public Item getItem(String rawName) throws NoSuchItemException {
