@@ -63,11 +63,11 @@ public class BattleManager {
                                         "\n2) " + enemy.getName());
                                 if(Main.getChoice(1, 2) == 1) {
                                     Main.clearScreen();
-                                    s.Cast(ally);
+                                    s.cast(ally);
                                 }
                                 else {
                                     Main.clearScreen();
-                                    s.Cast(ally, enemy);
+                                    s.cast(ally, enemy);
                                 }
                                 isAllyTurn = false;
                             }

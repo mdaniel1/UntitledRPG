@@ -2,7 +2,7 @@ package rpg.classes;
 
 import rpg.enums.DiceType;
 import rpg.enums.SpellType;
-import org.fusesource.jansi.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class WaterSpell extends Spell {
     public WaterSpell(String name, String rawName, DiceType dice, SpellType type) {
@@ -14,11 +14,13 @@ public class WaterSpell extends Spell {
 
     @Override
     public void effects(CharacterRPG c1) {
-
+        throw new NotImplementedException();
+        //TODO
     }
 
     @Override
     public void effects(CharacterRPG c1, CharacterRPG c2) {
-
+        throw new NotImplementedException();
+        //TODO
     }
 }

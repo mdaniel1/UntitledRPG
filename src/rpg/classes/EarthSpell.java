@@ -2,7 +2,7 @@ package rpg.classes;
 
 import rpg.enums.DiceType;
 import rpg.enums.SpellType;
-import org.fusesource.jansi.*;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class EarthSpell extends Spell {
     public EarthSpell(String name, String rawName, DiceType dice, SpellType type) {
@@ -14,11 +14,11 @@ public class EarthSpell extends Spell {
 
     @Override
     public void effects(CharacterRPG c1) {
-
+        throw new NotImplementedException();
     }
 
     @Override
     public void effects(CharacterRPG c1, CharacterRPG c2) {
-
+        throw new NotImplementedException();
     }
 }

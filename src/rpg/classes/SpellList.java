@@ -4,7 +4,6 @@ import rpg.enums.DiceType;
 import rpg.enums.SpellType;
 import rpg.main.Game;
 import rpg.main.Main;
-import org.fusesource.jansi.*;
 
 public class SpellList {
 

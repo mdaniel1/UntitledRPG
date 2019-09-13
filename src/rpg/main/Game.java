@@ -5,11 +5,9 @@ import rpg.classes.ItemList;
 import rpg.classes.SpellList;
 import rpg.classes.Weapon;
 import rpg.enums.DiceType;
-import rpg.exceptions.NoSuchItemException;
 import rpg.utils.BattleManager;
 import org.fusesource.jansi.AnsiConsole;
 
-import java.lang.reflect.InvocationTargetException;
 
 public class Game {
     public static String ANSI_RESET = "\u001B[0m";
@@ -26,10 +24,6 @@ public class Game {
 
     private static boolean isWindows;
     public static boolean isIntelliJIdea = false;
-
-    public Game(){
-        Start();
-    }
 
     public void Start(){
         disableColors();
