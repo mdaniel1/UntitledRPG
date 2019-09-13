@@ -6,6 +6,7 @@ import rpg.classes.Spell;
 import rpg.enums.DiceType;
 import rpg.main.Game;
 import rpg.main.Main;
+import org.fusesource.jansi.*;
 
 import java.util.ArrayList;
 

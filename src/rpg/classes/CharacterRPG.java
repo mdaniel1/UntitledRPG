@@ -9,6 +9,7 @@ import rpg.main.Main;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import org.fusesource.jansi.*;
 
 public class CharacterRPG {
 

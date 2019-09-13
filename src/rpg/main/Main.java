@@ -5,6 +5,7 @@ import rpg.enums.DiceType;
 
 import java.util.Random;
 import java.util.Scanner;
+import org.fusesource.jansi.*;
 
 public class Main {
 
@@ -53,6 +54,8 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        if(args.length > 0 && args[0].equals("-idea"))
+            Game.isIntelliJIdea = true;
         Game g = new Game();
     }
 }

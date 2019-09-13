@@ -1,6 +1,7 @@
 package rpg.classes;
 
 import rpg.main.Game;
+import org.fusesource.jansi.*;
 
 public class ItemList {
     public static final Item SMALL_HEALTH_POTION = new Item("small health potion", "I_S_HEALTH_POTION", "a", 8){

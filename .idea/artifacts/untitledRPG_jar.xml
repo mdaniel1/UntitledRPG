@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="untitledRPG:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/untitledRPG_jar</output-path>
+    <root id="archive" name="untitledRPG.jar">
+      <element id="module-output" name="untitledRPG" />
+      <element id="library" level="project" name="jansi-1.18" />
+    </root>
+  </artifact>
+</component>
