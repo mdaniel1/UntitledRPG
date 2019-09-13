@@ -27,7 +27,7 @@ public class CharacterRPG {
 
     private HashSet<Spell> spells = new HashSet<>();
 
-    private HashMap<Item, Integer> inventory = new HashMap<>();
+    private HashMap<LootableItem, Integer> inventory = new HashMap<>();
     //SECONDARY CHARACTERISTICS
 
     private int bonusDamage = 0;
@@ -38,7 +38,8 @@ public class CharacterRPG {
     private String pronoun; //He, she, they, etc...
 
     private String article; //a, the, ...
-    private ArrayList<Item> lootTable = new ArrayList<>();
+    private ArrayList<LootableItem> lootTable = new ArrayList<>();
+
     public CharacterRPG(String name, int HP, int maxHP, int armor, String pronoun, String article){
         setName(name);
         setHP(HP);
@@ -143,14 +144,14 @@ public class CharacterRPG {
     }
 
     public void setArticle(String article) {
-        this.article = article;
+        this.article = article + " ";
     }
 
-    public ArrayList<Item> getLootTable() {
+    public ArrayList<LootableItem> getLootTable() {
         return lootTable;
     }
 
-    public void setLootTable(ArrayList<Item> lootTable) {
+    public void setLootTable(ArrayList<LootableItem> lootTable) {
         this.lootTable = lootTable;
     }
 
@@ -162,25 +163,25 @@ public class CharacterRPG {
         this.internalId = internalId;
     }
 
-    public void Attack(CharacterRPG c, boolean forceFumble){
-        if(c != null){
-            if(c != this){
+    public void Attack(CharacterRPG enemy, boolean forceFumble){
+        if(enemy != null){
+            if(enemy != this){
                 int diceRoll = Main.rollDice(DiceType.D20) + this.bonusHitChance;
                 if(diceRoll != 1 && !forceFumble){
                     if(diceRoll < this.getWeapon().getCritValue()){
-                        if(c.getArmor() + c.temporaryArmor <= diceRoll) //HIT
+                        if(enemy.getArmor() + enemy.temporaryArmor <= diceRoll) //HIT
                         {
                             int damageRoll = this.getWeapon().getDamage() + this.bonusDamage;
-                            System.out.println(Game.ANSI_YELLOW + getName() + Game.ANSI_RESET
-                                    + " managed to hit " + Game.ANSI_YELLOW + c.getName() + Game.ANSI_RESET + " with " + getArticle()
+                            System.out.println(getArticle() + Game.ANSI_YELLOW + getName() + Game.ANSI_RESET
+                                    + " managed to hit " + Game.ANSI_YELLOW + enemy.getName() + Game.ANSI_RESET + " with "
                                     + Game.ANSI_YELLOW + this.getWeapon().getName() + Game.ANSI_RESET
                                     + " for " + Game.ANSI_RED + damageRoll + Game.ANSI_RESET + " damage.");
-                            calculateDamage(c, damageRoll);
+                            calculateDamage(enemy, damageRoll);
                         }
                         else{ //OR MISS, I GUESS THEY NEVER MISS HUH.
                             System.out.println(Game.ANSI_YELLOW + getName() + Game.ANSI_RESET
                                     + " misses "
-                                    + Game.ANSI_YELLOW + c.getName() + Game.ANSI_RESET
+                                    + Game.ANSI_YELLOW + enemy.getName() + Game.ANSI_RESET
                                     + " and inflicts no damage ");
                         }
                     }
@@ -188,10 +189,10 @@ public class CharacterRPG {
                         int damageRoll = this.getWeapon().getDamage() + this.bonusDamage;
                         damageRoll*=2;
                         System.out.println(Main.getCriticalDescriptor() + Game.ANSI_YELLOW + getName() + Game.ANSI_RESET
-                                + " managed to hit " + Game.ANSI_YELLOW + c.getName() + Game.ANSI_RESET
+                                + " managed to hit " + Game.ANSI_YELLOW + enemy.getName() + Game.ANSI_RESET
                                 + " for " + Game.ANSI_RED + damageRoll + Game.ANSI_RESET + " damage.");
 
-                        calculateDamage(c, damageRoll);
+                        calculateDamage(enemy, damageRoll);
                     }
                 }
                 else{ //FUMBLE (oh no)
@@ -274,12 +275,12 @@ public class CharacterRPG {
         return spells;
     }
 
-    public HashMap<Item, Integer> getInventory(){
+    public HashMap<LootableItem, Integer> getInventory(){
         return inventory;
     }
 
     public boolean hasItem(String rawName){
-        for(Item i : inventory.keySet()){
+        for(LootableItem i : inventory.keySet()){
             if(i.getRawName().equals(rawName))
                 return true;
         }
@@ -295,8 +296,8 @@ public class CharacterRPG {
         return inventory.isEmpty();
     }
 
-    public Item getItem(String rawName) throws NoSuchItemException {
-        for(Item i : inventory.keySet()){
+    public LootableItem getItem(String rawName) throws NoSuchItemException {
+        for(LootableItem i : inventory.keySet()){
             if(i.getRawName().equals(rawName))
                 return i;
         }
@@ -304,8 +305,8 @@ public class CharacterRPG {
         throw new NoSuchItemException("Not enough " + rawName);
     }
 
-    public Item getItem(Item item) throws NoSuchItemException {
-        for(Item i : inventory.keySet()){
+    public LootableItem getItem(LootableItem item) throws NoSuchItemException {
+        for(LootableItem i : inventory.keySet()){
             if(i.equals(item))
                 return i;
         }
@@ -325,27 +326,33 @@ public class CharacterRPG {
         }
     }
 
-    public void useItem(Item i){
-        if(hasItem(i)){
-            int nb = inventory.get(i);
-            nb -= 1;
-            i.applyEffects(this);
-            if(nb <= 0){
-                inventory.remove(i);
+    public void useItem(LootableItem i) throws Exception {
+        if(i instanceof Weapon)
+            throw new Exception("This item cannot be used.");
+        else{
+            if(hasItem((Item)i)){
+                int nb = inventory.get(i);
+                nb -= 1;
+                ((Item) i).applyEffects(this);
+                if(nb <= 0){
+                    inventory.remove(i);
+                }
+                else{
+                    inventory.put(i, nb);
+                }
             }
-            else{
-                inventory.put(i, nb);
-            }
+            else
+                System.out.println(Game.ANSI_YELLOW + this.getName() + Game.ANSI_RESET + " doesn't have any " + Game.ANSI_PURPLE + i.getName() + Game.ANSI_RESET);
         }
-        else
-            System.out.println(Game.ANSI_YELLOW + this.getName() + Game.ANSI_RESET + " doesn't have any " + Game.ANSI_PURPLE + i.getName() + Game.ANSI_RESET);
     }
 
-    public void useItem(Item i, CharacterRPG target){
-        if(hasItem(i)){
+    public void useItem(LootableItem i, CharacterRPG target) throws Exception {
+        if(i instanceof Weapon)
+            throw new Exception("This item cannot be used.");
+        if(hasItem((Item) i)){
             int nb = inventory.get(i);
             nb--;
-            i.applyEffects(this, target);
+            ((Item) i).applyEffects(this, target);
             if(nb <= 0){
                 inventory.remove(i);
             }
@@ -357,8 +364,15 @@ public class CharacterRPG {
             System.out.println(Game.ANSI_YELLOW + this.getName() + Game.ANSI_RESET + " doesn't have any " + Game.ANSI_PURPLE + i.getName() + Game.ANSI_RESET);
     }
 
-    public Item getRandomizedLoot(){
+    public LootableItem getRandomizedLoot(){
         return lootTable.get(Main.dice.nextInt(lootTable.size()));
+    }
+
+    public void addItemToLootTable(LootableItem i){
+        if(i != null)
+        {
+            lootTable.add(i);
+        }
     }
 
     void LevelUp(int choice){

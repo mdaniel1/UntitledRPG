@@ -1,4 +1,5 @@
 Loot tables
+Enemies still attack you if you successfully flee from battle.
 Loots from loot table when killing someone
 Exp
 Level ups

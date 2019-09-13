@@ -1,10 +1,10 @@
 package rpg.classes;
 
-public class Item {
+public class Item implements LootableItem{
     private String name;
-    private String rawName;
     private String article;
     private int basePrice;
+    private String rawName = null;
 
     public Item(String name, String rawName, String article, int basePrice){
         setArticle(article);
@@ -38,14 +38,6 @@ public class Item {
         this.basePrice = basePrice;
     }
 
-    public String getRawName() {
-        return rawName;
-    }
-
-    public void setRawName(String rawName) {
-        this.rawName = rawName;
-    }
-
     public void applyEffects(CharacterRPG c1) {
 
     }
@@ -57,5 +49,15 @@ public class Item {
     @Override
     public boolean equals(Object obj) {
         return obj instanceof Item && (this.getRawName().equals(((Item) obj).getRawName()));
+    }
+
+    @Override
+    public String getRawName() {
+        return rawName;
+    }
+
+    @Override
+    public void setRawName(String rawName) {
+        this.rawName = rawName;
     }
 }

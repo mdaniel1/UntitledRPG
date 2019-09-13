@@ -2,6 +2,7 @@ package rpg.utils;
 
 import rpg.classes.CharacterRPG;
 import rpg.classes.Item;
+import rpg.classes.LootableItem;
 import rpg.classes.Spell;
 import rpg.enums.DiceType;
 import rpg.main.Game;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 public class BattleManager {
 
     public static void startBattle(CharacterRPG ally, CharacterRPG enemy, boolean isEscapeable){
+        Main.clearScreen();
         System.out.println("\n---BATTLE START---");
         boolean isAllyTurn;
         boolean fledBattle = false;
@@ -24,8 +26,8 @@ public class BattleManager {
                         ", you are level " + ally.getLevel() +
                         ", you have " + Game.ANSI_GREEN + ally.getHP() +  "/" + ally.getMaxHP() + " HP left." + Game.ANSI_RESET +
                         "\nYou are fighting " + Game.ANSI_YELLOW + enemy.getName() + Game.ANSI_RESET +
-                        ", " + enemy.getPronoun().toLowerCase() + " is level " + Main.getEnemyLevelColoration(ally, enemy) + enemy.getLevel() + Game.ANSI_RESET +
-                        ", " + enemy.getPronoun().toLowerCase() + " has " + Game.ANSI_RED + enemy.getHP() +  "/" + enemy.getMaxHP() + " HP left." + Game.ANSI_RESET +
+                        ", " + enemy.getPronoun().toLowerCase() + (enemy.getPronoun().toLowerCase().equals("they") ? " are" : " is") +" level " + Main.getEnemyLevelColoration(ally, enemy) + enemy.getLevel() + Game.ANSI_RESET +
+                        ", " + enemy.getPronoun().toLowerCase() + (enemy.getPronoun().toLowerCase().equals("they") ? " have " : " has ") + Game.ANSI_RED + enemy.getHP() +  "/" + enemy.getMaxHP() + " HP left." + Game.ANSI_RESET +
                         "\n\n");
                 System.out.println("1) Attack\n2) Defend yourself\n3) Use a skill\n4) Use an item\n5) Flee");
                 switch(Main.getChoice(1, 5)){
@@ -82,26 +84,37 @@ public class BattleManager {
                             System.out.println("You don't have any item.");
                         else{
                             int cptItem = 1;
-                            for(Item i : ally.getInventory().keySet()){
+                            for(LootableItem i : ally.getInventory().keySet()){
                                 System.out.println(cptItem + ") " + i.getName());
                                 cptItem++;
                             }
                             System.out.println(cptItem + ") Return");
                             int choiceItem = Main.getChoice(1, cptItem);
                             if(choiceItem != cptItem){
-                                Item i = new ArrayList<>(ally.getInventory().keySet()).get(choiceItem-1);
+                                LootableItem i = new ArrayList<>(ally.getInventory().keySet()).get(choiceItem-1);
                                 System.out.println("\nChoose the target : " +
                                         "\n1) " + ally.getName() +
                                         "\n2) " + enemy.getName());
                                 if(Main.getChoice(1, 2) == 1){
                                     Main.clearScreen();
-                                    ally.useItem(i);
+                                    try {
+                                        ally.useItem(i);
+                                        isAllyTurn = false;
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                        isAllyTurn = true;
+                                    }
                                 }
                                 else{
                                     Main.clearScreen();
-                                    ally.useItem(i, enemy);
+                                    try {
+                                        ally.useItem(i, enemy);
+                                        isAllyTurn = false;
+                                    } catch (Exception e) {
+                                        System.out.println(e.getMessage());
+                                        isAllyTurn = true;
+                                    }
                                 }
-                                isAllyTurn = false;
                             }
                             else{
                                 isAllyTurn = true;

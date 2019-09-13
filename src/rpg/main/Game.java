@@ -3,6 +3,8 @@ package rpg.main;
 import rpg.classes.CharacterRPG;
 import rpg.classes.ItemList;
 import rpg.classes.SpellList;
+import rpg.classes.Weapon;
+import rpg.enums.DiceType;
 import rpg.exceptions.NoSuchItemException;
 import rpg.utils.BattleManager;
 import org.fusesource.jansi.AnsiConsole;
@@ -45,14 +47,14 @@ public class Game {
             enableColors();
         }
 
-        System.out.println(ANSI_YELLOW + "TEST" + ANSI_RESET);
-
-        CharacterRPG test = new CharacterRPG("Arthur", 30, 50, 1, "He", "");
-        CharacterRPG test2 = new CharacterRPG("Perceval", 30, 50, 1, "He", "");
-        BattleManager bm = new BattleManager();
+        CharacterRPG test = new CharacterRPG("Innoxia", 50, 50, 6, "He", "");
+        CharacterRPG test2 = new CharacterRPG("Swarm of bugs", 20, 20, 3, "They", "The");
 
         test.addSpell(SpellList.HEAL_BASIC);
-        if(test.hasSpell("W_SPELL_LIGHT_HEAL")){
+        test.addItem(ItemList.SMALL_HEALTH_POTION);
+        test.setWeapon(new Weapon("Bug killer", DiceType.D10, 20, 1));
+        test2.setWeapon(new Weapon("Tentacles", DiceType.D6, 20, 2));
+        /*if(test.hasSpell("W_SPELL_LIGHT_HEAL")){
             test.getSpell("W_SPELL_LIGHT_HEAL").Cast(test);
             test.getSpell("W_SPELL_LIGHT_HEAL").Cast(test, test2);
         }
@@ -65,6 +67,11 @@ public class Game {
         catch(NoSuchItemException e){
             System.out.println(e.getMessage());
         }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }*/
+
+        BattleManager.startBattle(test, test2, true);
 
         quit();
     }

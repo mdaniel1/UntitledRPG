@@ -3,13 +3,14 @@ package rpg.classes;
 import rpg.enums.DiceType;
 import rpg.main.Main;
 
-public class Weapon {
+public class Weapon implements LootableItem {
     private String name;
     private DiceType damage;
     private int critValue;
     private int nbAttacks;
+    private String rawName = null;
 
-    public Weapon(String name, DiceType damage, int crit, int nbAttacks){
+    public Weapon(String name, DiceType damage, int crit, int nbAttacks) {
         setName(name);
         setDamage(damage);
         setCritValue(crit);
@@ -51,5 +52,15 @@ public class Weapon {
 
     public void setNbAttacks(int nbAttacks) {
         this.nbAttacks = nbAttacks;
+    }
+
+    @Override
+    public String getRawName() {
+        return rawName;
+    }
+
+    @Override
+    public void setRawName(String rawName) {
+        this.rawName = rawName;
     }
 }
