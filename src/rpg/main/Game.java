@@ -34,7 +34,7 @@ public class Game {
         CharacterRPG test2 = new CharacterRPG("Perceval", 30, 50, 1, "He", "");
         BattleManager bm = new BattleManager();
 
-        test.AddSpell(SpellList.HEAL_BASIC);
+        test.addSpell(SpellList.HEAL_BASIC);
         if(test.hasSpell("W_SPELL_LIGHT_HEAL")){
             test.getSpell("W_SPELL_LIGHT_HEAL").Cast(test);
             test.getSpell("W_SPELL_LIGHT_HEAL").Cast(test, test2);
