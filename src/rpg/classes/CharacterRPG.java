@@ -5,10 +5,12 @@ import rpg.enums.SpellType;
 import rpg.exceptions.NoSuchItemException;
 import rpg.main.Game;
 import rpg.main.Main;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.logging.Level;
 
 public class CharacterRPG {
 
@@ -21,8 +23,11 @@ public class CharacterRPG {
     private Weapon weapon;
     private int armor;
     private int level = 1;
+    private int currentExp = 0;
+    private int nextLevelUp = 200;
     public boolean isAlive = true;
     private int money = 0;
+    private int ExpYield;
 
     private HashSet<Spell> spells = new HashSet<>();
 
@@ -33,13 +38,14 @@ public class CharacterRPG {
     private int bonusHeal = 0;
     private int bonusHitChance = 0;
     private int temporaryArmor = 0;
+    private int bonusTemporaryArmor = 0;
 
     private String pronoun; //He, she, they, etc...
 
     private String article; //a, the, ...
     private ArrayList<LootableItem> lootTable = new ArrayList<>();
 
-    public CharacterRPG(String name, int HP, int maxHP, int armor, String pronoun, String article){
+    public CharacterRPG(String name, int HP, int maxHP, int armor, String pronoun, String article, int xpYield){
         setName(name);
         setHP(HP);
         setMaxHP(maxHP);
@@ -48,6 +54,7 @@ public class CharacterRPG {
         setArticle(article);
         setWeapon(new Weapon("Fists", DiceType.D4, 20, 1));
         setInternalId(++nextId);
+        setExpYield(xpYield);
     }
 
 
@@ -62,6 +69,7 @@ public class CharacterRPG {
     public int getHP() {
         return HP;
     }
+
     public void setHP(int HP) {
         this.HP = HP;
     }
@@ -166,6 +174,54 @@ public class CharacterRPG {
 
     public void setInternalId(int internalId) {
         this.internalId = internalId;
+    }
+
+    public int getExpYield() {
+        return ExpYield;
+    }
+
+    public void setExpYield(int xpYield) {
+        this.ExpYield = xpYield;
+    }
+
+    public void addExp(int addedExp){
+        setCurrentExp(getCurrentExp() + addedExp);
+        while(getCurrentExp() > getNextLevelUp()){
+            LevelUp();
+            setNextLevelUp(getNextLevelUp() + 350);
+        }
+    }
+
+    public int getCurrentExp() {
+        return currentExp;
+    }
+
+    public void setCurrentExp(int currentExp) {
+        this.currentExp = currentExp;
+    }
+
+    public int getNextLevelUp() {
+        return nextLevelUp;
+    }
+
+    public void setNextLevelUp(int nextLevelUp) {
+        this.nextLevelUp = nextLevelUp;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public int getBonusTemporaryArmor() {
+        return bonusTemporaryArmor;
+    }
+
+    public void setBonusTemporaryArmor(int bonusTemporaryArmor) {
+        this.bonusTemporaryArmor = bonusTemporaryArmor;
     }
 
     public String getPresentConjugation(String verb){
@@ -443,8 +499,69 @@ public class CharacterRPG {
         }
     }
 
-    void LevelUp(int choice){
-
+    void LevelUp(){
+        setLevel(getLevel() + 1);
+        System.out.println("\nLevel up ! You are now level " + getLevel());
+        boolean doneLeveling = false;
+        while(!doneLeveling){
+            System.out.println("You can choose the following rewards : \n\n" +
+                    "1) +15 max HP\n" +
+                    "2) +2 damage\n" +
+                    "3) +1 accuracy\n" +
+                    "4) +1 bonus armor when defending\n" +
+                    "5) +1 healing power\n" +
+                    "6) Learn a spell");
+            switch(Main.getChoice(1,6)){
+                case 1:
+                    System.out.println("Max HP increased from " + Game.ANSI_GREEN + getMaxHP() + Game.ANSI_RESET + " to " + Game.ANSI_GREEN + (getMaxHP()+15) + Game.ANSI_RESET);
+                    setMaxHP(getMaxHP()+15);
+                    doneLeveling = true;
+                    break;
+                case 2:
+                    System.out.println("Bonus damage increased from " + Game.ANSI_GREEN + getBonusDamage() + Game.ANSI_RESET + " to " + Game.ANSI_GREEN + (getBonusDamage()+2) + Game.ANSI_RESET);
+                    setBonusDamage(getBonusDamage()+2);
+                    doneLeveling = true;
+                    break;
+                case 3:
+                    System.out.println("Bonus accuracy increased from " + Game.ANSI_GREEN + getBonusHitChance() + Game.ANSI_RESET + " to " + Game.ANSI_GREEN + (getBonusHitChance()+1) + Game.ANSI_RESET);
+                    setBonusHitChance(getBonusHitChance() + 1);
+                    doneLeveling = true;
+                    break;
+                case 4:
+                    System.out.println("Bonus armor when defending increased from " + Game.ANSI_GREEN + getBonusTemporaryArmor() + Game.ANSI_RESET + " to " + Game.ANSI_GREEN + (getBonusTemporaryArmor()+1) + Game.ANSI_RESET);
+                    setBonusTemporaryArmor(getBonusTemporaryArmor() + 1);
+                    doneLeveling = true;
+                    break;
+                case 5:
+                    System.out.println("Bonus armor when defending increased from " + Game.ANSI_GREEN + getBonusHeal() + Game.ANSI_RESET + " to " + Game.ANSI_GREEN + (getBonusHeal()+1) + Game.ANSI_RESET);
+                    setBonusHeal(getBonusHeal() + 1);
+                    doneLeveling = true;
+                    break;
+                case 6:
+                    int i = 1;
+                    ArrayList<Spell> spellsAvailable = SpellList.getAllAvailableSpellsForLevel(this);
+                    if(!spellsAvailable.isEmpty()){
+                        for(Spell s : spellsAvailable){
+                            if(s.getLevelAvailable() <= getLevel()){
+                                System.out.println(i + ") " + s.getName());
+                            }
+                            i++;
+                        }
+                        System.out.println(i + ") Cancel");
+                        int choice = Main.getChoice(1, i);
+                        if(choice < i)
+                        {
+                            addSpell(spellsAvailable.get(choice-1));
+                            doneLeveling = true;
+                        }
+                    }
+                    else{
+                        System.out.println(Game.ANSI_RED + "You can't learn any new spells at the moment." + Game.ANSI_RESET);
+                    }
+                    break;
+            }
+        }
+        setHP(getMaxHP());
     }
 }
 

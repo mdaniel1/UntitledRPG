@@ -41,15 +41,13 @@ public class Game {
             enableColors();
         }
 
-        CharacterRPG test = new CharacterRPG("Innoxia", 50, 50, 6, "She", "");
-        CharacterRPG test2 = new CharacterRPG("Swarm of bugs", 20, 20, 3, "It", "The");
+        CharacterRPG test = new CharacterRPG("Innoxia", 50, 50, 6, "She", "", 0);
+        CharacterRPG test2 = new CharacterRPG("Swarm of bugs", 20, 20, 3, "It", "The", 1000);
         test2.addItemToLootTable(ItemList.SMALL_HEALTH_POTION);
         test2.addItemToLootTable(ItemList.MEDIUM_HEALTH_POTION);
         test2.addItemToLootTable(ItemList.BIG_HEALTH_POTION);
 
-        test.addSpell(SpellList.HEAL_BASIC);
-        test.addItem(ItemList.SMALL_HEALTH_POTION);
-        test.setWeapon(new Weapon("Bug killer", DiceType.D10, 20, 1));
+        test.setWeapon(new Weapon("Bug killer", DiceType.D100, 20, 1));
         test2.setWeapon(new Weapon("Tentacles", DiceType.D6, 20, 2));
         /*if(test.hasSpell("W_SPELL_LIGHT_HEAL")){
             test.getSpell("W_SPELL_LIGHT_HEAL").Cast(test);

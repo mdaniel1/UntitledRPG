@@ -8,6 +8,7 @@ public abstract class Spell {
     private String rawName;
     private DiceType dice;
     private SpellType type;
+    private int levelAvailable;
 
     public abstract void effects(CharacterRPG c1);
     public abstract void effects(CharacterRPG c1, CharacterRPG c2);
@@ -39,6 +40,14 @@ public abstract class Spell {
 
     public SpellType getType() {
         return type;
+    }
+
+    public int getLevelAvailable() {
+        return levelAvailable;
+    }
+
+    public void setLevelAvailable(int levelAvailable) {
+        this.levelAvailable = levelAvailable;
     }
 
     public void cast(CharacterRPG c1){

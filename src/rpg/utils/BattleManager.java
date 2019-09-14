@@ -68,9 +68,9 @@ public class BattleManager {
             }
         }
         if(!enemy.isAlive){
-            //TODO: gain XP
             try {
                 ally.addItem(enemy.getRandomizedLoot());
+                ally.addExp(enemy.getExpYield());
             } catch (NoSuchItemException e) {
                 System.out.println(e.getMessage());
             }
@@ -175,9 +175,10 @@ public class BattleManager {
     private static boolean doDefend(CharacterRPG ally) {
         boolean isAllyTurn;
         Main.clearScreen();
+        int bonusArmor = 1 + ally.getBonusTemporaryArmor();
         System.out.println("You brace yourself in preparation for the enemy's attack. " +
-                "(" + Game.ANSI_GREEN + "+1 Armor" + Game.ANSI_RESET + " for this turn)");
-        ally.setTemporaryArmor(1);
+                "(" + Game.ANSI_GREEN + bonusArmor + " Armor" + Game.ANSI_RESET + " for this turn)");
+        ally.setTemporaryArmor(bonusArmor);
         isAllyTurn = false;
         return isAllyTurn;
     }

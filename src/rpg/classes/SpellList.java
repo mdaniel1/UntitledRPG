@@ -5,10 +5,23 @@ import rpg.enums.SpellType;
 import rpg.main.Game;
 import rpg.main.Main;
 
+import java.util.ArrayList;
+
 public class SpellList {
 
-    public static final Spell HEAL_BASIC = new WaterSpell("Light heal", "W_SPELL_LIGHT_HEAL", DiceType.D4, SpellType.HEAL){
+    public static ArrayList<Spell> allSpells = new ArrayList<>();
+    public static ArrayList<Spell>getAllAvailableSpellsForLevel(CharacterRPG character){
+        ArrayList<Spell> spellsAvailable = new ArrayList();
+        for(Spell s : allSpells){
+            if(s.getLevelAvailable() <= character.getLevel() && !character.hasSpell(s))
+                spellsAvailable.add(s);
+        }
 
+        return spellsAvailable;
+    }
+
+    public static final Spell HEAL_BASIC = new WaterSpell("Light heal", "W_SPELL_LIGHT_HEAL", DiceType.D4, SpellType.HEAL){
+        int availableLevel = 1;
         @Override
         public void effects(CharacterRPG c1){
             int diceRoll = Main.rollDice(DiceType.D20);
@@ -93,5 +106,10 @@ public class SpellList {
             }
         }
     };
+
+    static{
+        allSpells.add(HEAL_BASIC);
+        //Need to add all new spells to the list.
+    }
 
 }
