@@ -5,4 +5,6 @@ public interface LootableItem {
     void setRawName(String rawName);
 
     String getName();
+
+    String getArticle();
 }

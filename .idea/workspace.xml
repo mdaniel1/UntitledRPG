@@ -8,16 +8,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a04441c7-a7b0-4442-9238-7eb97f1a66ce" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rpg/classes/AirSpell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/classes/AirSpell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rpg/TODO.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/TODO.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rpg/classes/CharacterRPG.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/classes/CharacterRPG.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rpg/classes/EarthSpell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/classes/EarthSpell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rpg/classes/FireSpell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/classes/FireSpell.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rpg/classes/ItemList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/classes/ItemList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rpg/classes/Spell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/classes/Spell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rpg/classes/SpellList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/classes/SpellList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rpg/classes/WaterSpell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/classes/WaterSpell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rpg/classes/LootableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/classes/LootableItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rpg/classes/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/classes/Weapon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rpg/main/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/main/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rpg/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/rpg/utils/BattleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/rpg/utils/BattleManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -32,83 +28,90 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rpg/main/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
-              <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
+            <state relative-caret-position="147">
+              <caret line="44" column="84" selection-start-line="44" selection-start-column="84" selection-end-line="44" selection-end-column="84" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/rpg/utils/BattleManager.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="67" column="38" lean-forward="true" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/rpg/classes/FireSpell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#431#432#0" expanded="true" />
-                <element signature="e#482#483#0" expanded="true" />
-                <element signature="e#557#558#0" expanded="true" />
-                <element signature="e#608#609#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/rpg/classes/EarthSpell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#433#434#0" expanded="true" />
-                <element signature="e#484#485#0" expanded="true" />
-                <element signature="e#559#560#0" expanded="true" />
-                <element signature="e#610#611#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/rpg/classes/AirSpell.java">
+        <entry file="file://$PROJECT_DIR$/src/rpg/utils/BattleManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+            <state relative-caret-position="186">
+              <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#428#429#0" expanded="true" />
-                <element signature="e#479#480#0" expanded="true" />
-                <element signature="e#554#555#0" expanded="true" />
-                <element signature="e#605#606#0" expanded="true" />
+                <element signature="method#doUseItem#0;class#BattleManager#0" />
+                <element signature="method#doUseSkill#0;class#BattleManager#0" />
+                <element signature="method#doDefend#0;class#BattleManager#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/rpg/TODO.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rpg/classes/CharacterRPG.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-901">
-              <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+            <state relative-caret-position="222">
+              <caret line="435" column="69" selection-start-line="435" selection-start-column="69" selection-end-line="435" selection-end-column="69" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3338#3339#0" expanded="true" />
+                <element signature="e#3447#3448#0" expanded="true" />
+                <element signature="e#3514#3515#0" expanded="true" />
+                <element signature="e#3607#3608#0" expanded="true" />
+                <element signature="e#3500#4249#0" />
+                <element signature="e#9834#9835#0" expanded="true" />
+                <element signature="e#9817#9818#0" expanded="true" />
+                <element signature="e#9849#9850#0" expanded="true" />
+                <element signature="e#10107#10108#0" expanded="true" />
+                <element signature="e#10157#10158#0" expanded="true" />
+                <element signature="e#10197#10198#0" expanded="true" />
+                <element signature="e#10239#10240#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/rpg/classes/Weapon.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+              <folding>
+                <element signature="e#525#526#0" expanded="true" />
+                <element signature="e#553#554#0" expanded="true" />
+                <element signature="e#1216#1217#0" expanded="true" />
+                <element signature="e#1246#1247#0" expanded="true" />
+                <element signature="e#1306#1307#0" expanded="true" />
+                <element signature="e#1344#1345#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/rpg/classes/LootableItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="10" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/rpg/classes/ItemList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="101" column="60" selection-start-line="101" selection-start-column="60" selection-end-line="101" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -116,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rpg/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="436">
-              <caret line="58" column="18" lean-forward="true" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
+            <state relative-caret-position="816">
+              <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -128,8 +131,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/rpg/classes/Spell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="453">
-              <caret line="59" column="1" lean-forward="true" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
+            <state relative-caret-position="646">
+              <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#781#782#0" expanded="true" />
@@ -144,18 +147,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/rpg/classes/WaterSpell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -185,6 +176,12 @@
       <find>getRawName</find>
       <find>Attack</find>
       <find>setARticle</find>
+      <find>addItem</find>
+      <find>hasItem</find>
+      <find>additem</find>
+      <find>himself</find>
+      <find>getArticle</find>
+      <find>getrando</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -198,21 +195,21 @@
         <option value="$PROJECT_DIR$/src/rpg/enums/SpellType.java" />
         <option value="$PROJECT_DIR$/src/rpg/utils/WinRegistry.java" />
         <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-        <option value="$PROJECT_DIR$/src/rpg/classes/Weapon.java" />
         <option value="$PROJECT_DIR$/src/rpg/classes/Item.java" />
-        <option value="$PROJECT_DIR$/src/rpg/classes/LootableItem.java" />
-        <option value="$PROJECT_DIR$/src/rpg/TODO.txt" />
-        <option value="$PROJECT_DIR$/src/rpg/classes/CharacterRPG.java" />
-        <option value="$PROJECT_DIR$/src/rpg/classes/ItemList.java" />
         <option value="$PROJECT_DIR$/src/rpg/classes/SpellList.java" />
-        <option value="$PROJECT_DIR$/src/rpg/main/Game.java" />
         <option value="$PROJECT_DIR$/src/rpg/main/Main.java" />
         <option value="$PROJECT_DIR$/src/rpg/classes/WaterSpell.java" />
         <option value="$PROJECT_DIR$/src/rpg/classes/Spell.java" />
-        <option value="$PROJECT_DIR$/src/rpg/utils/BattleManager.java" />
         <option value="$PROJECT_DIR$/src/rpg/classes/FireSpell.java" />
         <option value="$PROJECT_DIR$/src/rpg/classes/EarthSpell.java" />
         <option value="$PROJECT_DIR$/src/rpg/classes/AirSpell.java" />
+        <option value="$PROJECT_DIR$/src/rpg/classes/LootableItem.java" />
+        <option value="$PROJECT_DIR$/src/rpg/classes/Weapon.java" />
+        <option value="$PROJECT_DIR$/src/rpg/TODO.txt" />
+        <option value="$PROJECT_DIR$/src/rpg/main/Game.java" />
+        <option value="$PROJECT_DIR$/src/rpg/classes/ItemList.java" />
+        <option value="$PROJECT_DIR$/src/rpg/classes/CharacterRPG.java" />
+        <option value="$PROJECT_DIR$/src/rpg/utils/BattleManager.java" />
       </list>
     </option>
   </component>
@@ -230,6 +227,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -266,6 +264,13 @@
               <item name="untitledRPG" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="rpg" type="462c0819:PsiDirectoryNode" />
+              <item name="enums" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="untitledRPG" type="b2602c69:ProjectViewProjectNode" />
+              <item name="untitledRPG" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="rpg" type="462c0819:PsiDirectoryNode" />
               <item name="libraries" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -279,7 +284,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -290,7 +294,8 @@
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="untitledrpg" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1568410261519" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1568455524300" />
+    <property name="extract.method.default.visibility" value="private" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/rpg/libraries/jansi-1.18.jar!/" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -346,18 +351,19 @@
       <workItem from="1567974405201" duration="1401000" />
       <workItem from="1568312792333" duration="2000" />
       <workItem from="1568383885428" duration="1000" />
-      <workItem from="1568409878460" duration="387000" />
+      <workItem from="1568409878460" duration="779000" />
+      <workItem from="1568451926348" duration="3624000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27329000" />
+    <option name="totallyTimeSpent" value="31345000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27771854" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28091684" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -366,7 +372,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.5124594" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.46912244" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -374,9 +380,9 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32827735" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.38894907" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="12" visible="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32827735" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -420,20 +426,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rpg/TODO.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="32" selection-start-line="6" selection-start-column="32" selection-end-line="6" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rpg/classes/ItemList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="21" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/rpg/classes/Item.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
@@ -441,19 +433,96 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rpg/classes/LootableItem.java">
+    <entry file="file://$PROJECT_DIR$/src/rpg/classes/FireSpell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        <state relative-caret-position="272">
+          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#431#432#0" expanded="true" />
+            <element signature="e#482#483#0" expanded="true" />
+            <element signature="e#557#558#0" expanded="true" />
+            <element signature="e#608#609#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rpg/classes/Weapon.java">
+    <entry file="file://$PROJECT_DIR$/src/rpg/classes/EarthSpell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="46" column="5" selection-start-line="46" selection-start-column="5" selection-end-line="46" selection-end-column="5" />
+        <state relative-caret-position="272">
+          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#484#485#0" expanded="true" />
+            <element signature="e#559#560#0" expanded="true" />
+            <element signature="e#610#611#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rpg/main/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rpg/classes/Spell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#781#782#0" expanded="true" />
+            <element signature="e#808#809#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rpg/classes/WaterSpell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rpg/classes/AirSpell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="59" lean-forward="true" selection-start-line="20" selection-start-column="59" selection-end-line="20" selection-end-column="59" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#605#606#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rpg/classes/LootableItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rpg/TODO.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rpg/classes/Weapon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+          <folding>
+            <element signature="e#525#526#0" expanded="true" />
+            <element signature="e#553#554#0" expanded="true" />
             <element signature="e#1216#1217#0" expanded="true" />
             <element signature="e#1246#1247#0" expanded="true" />
             <element signature="e#1306#1307#0" expanded="true" />
@@ -464,38 +533,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/rpg/main/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rpg/classes/CharacterRPG.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-901">
-          <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rpg/main/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="436">
-          <caret line="58" column="18" lean-forward="true" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rpg/classes/WaterSpell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="14" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
+        <state relative-caret-position="147">
+          <caret line="44" column="84" selection-start-line="44" selection-start-column="84" selection-end-line="44" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -512,66 +551,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/rpg/classes/Spell.java">
+    <entry file="file://$PROJECT_DIR$/src/rpg/classes/ItemList.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="453">
-          <caret line="59" column="1" lean-forward="true" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
+        <state relative-caret-position="199">
+          <caret line="101" column="60" selection-start-line="101" selection-start-column="60" selection-end-line="101" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/rpg/classes/CharacterRPG.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="435" column="69" selection-start-line="435" selection-start-column="69" selection-end-line="435" selection-end-column="69" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#781#782#0" expanded="true" />
-            <element signature="e#808#809#0" expanded="true" />
+            <element signature="e#3338#3339#0" expanded="true" />
+            <element signature="e#3447#3448#0" expanded="true" />
+            <element signature="e#3514#3515#0" expanded="true" />
+            <element signature="e#3607#3608#0" expanded="true" />
+            <element signature="e#3500#4249#0" />
+            <element signature="e#9834#9835#0" expanded="true" />
+            <element signature="e#9817#9818#0" expanded="true" />
+            <element signature="e#9849#9850#0" expanded="true" />
+            <element signature="e#10107#10108#0" expanded="true" />
+            <element signature="e#10157#10158#0" expanded="true" />
+            <element signature="e#10197#10198#0" expanded="true" />
+            <element signature="e#10239#10240#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/rpg/utils/BattleManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="67" column="38" lean-forward="true" selection-start-line="67" selection-start-column="38" selection-end-line="67" selection-end-column="38" />
+        <state relative-caret-position="186">
+          <caret line="70" column="27" selection-start-line="70" selection-start-column="27" selection-end-line="70" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rpg/classes/FireSpell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#431#432#0" expanded="true" />
-            <element signature="e#482#483#0" expanded="true" />
-            <element signature="e#557#558#0" expanded="true" />
-            <element signature="e#608#609#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rpg/classes/EarthSpell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#433#434#0" expanded="true" />
-            <element signature="e#484#485#0" expanded="true" />
-            <element signature="e#559#560#0" expanded="true" />
-            <element signature="e#610#611#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/rpg/classes/AirSpell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#428#429#0" expanded="true" />
-            <element signature="e#479#480#0" expanded="true" />
-            <element signature="e#554#555#0" expanded="true" />
-            <element signature="e#605#606#0" expanded="true" />
+            <element signature="method#doUseItem#0;class#BattleManager#0" />
+            <element signature="method#doUseSkill#0;class#BattleManager#0" />
+            <element signature="method#doDefend#0;class#BattleManager#0" />
           </folding>
         </state>
       </provider>

@@ -143,7 +143,13 @@ public class CharacterRPG {
     }
 
     public void setArticle(String article) {
-        this.article = article + " ";
+        if(article.isEmpty())
+        {
+            this.article = article;
+        }
+        else{
+            this.article = article + " ";
+        }
     }
 
     public ArrayList<LootableItem> getLootTable() {
@@ -160,6 +166,63 @@ public class CharacterRPG {
 
     public void setInternalId(int internalId) {
         this.internalId = internalId;
+    }
+
+    public String getPresentConjugation(String verb){
+        switch(verb){
+            case "be":
+                if(getPronoun().toLowerCase().equals("he") || getPronoun().toLowerCase().equals("she") || getPronoun().toLowerCase().equals("it"))
+                {
+                    return "is";
+                }
+                else{
+                    return "are";
+                }
+            case "have":
+                if(getPronoun().toLowerCase().equals("he") || getPronoun().toLowerCase().equals("she") || getPronoun().toLowerCase().equals("it"))
+                {
+                    return "has";
+                }
+                else{
+                    return "have";
+                }
+            case "go":
+                if(getPronoun().toLowerCase().equals("he") || getPronoun().toLowerCase().equals("she") || getPronoun().toLowerCase().equals("it"))
+                {
+                    return "goes";
+                }
+                else{
+                    return "go";
+                }
+            default:
+                if(getPronoun().toLowerCase().equals("he") || getPronoun().toLowerCase().equals("she") || getPronoun().toLowerCase().equals("it"))
+                {
+                    return verb + "s";
+                }
+                else{
+                    return verb;
+                }
+        }
+    }
+
+    public String getReflexivePronoun(boolean isPlural){
+        switch(getPronoun().toLowerCase()){
+            case "he":
+                return "himself";
+            case "she":
+                return "herself";
+            case "it":
+                return "itself";
+            case "we":
+                return "ourselves";
+            case "you":
+                if(isPlural)
+                    return "yourselves";
+                else
+                    return "yourself";
+            default:
+                return "themselves";
+        }
     }
 
     public void Attack(CharacterRPG enemy, boolean forceFumble){
@@ -197,7 +260,7 @@ public class CharacterRPG {
                 else{ //FUMBLE (oh no)
                     int damageRoll = this.getWeapon().getDamage() + this.bonusDamage;
                     System.out.println(Main.getFumbleDescriptor() + Game.ANSI_YELLOW + getName() + Game.ANSI_RESET
-                            + " hits " + (this.getPronoun().toLowerCase().equals("he") ? "himself" : this.getPronoun().toLowerCase().equals("she") ? "herself" : "themselves") + " for "
+                            + " hits " + getReflexivePronoun(false) + " for "
                             +Game.ANSI_RED + damageRoll + Game.ANSI_RESET + " damage.");
 
                     calculateDamage(this, damageRoll);
@@ -209,11 +272,11 @@ public class CharacterRPG {
         }
     }
 
-    private void calculateDamage(CharacterRPG c, int damageRoll) {
-        c.setHP(c.getHP() - damageRoll);
-        if(c.getHP() <= 0){
-            System.out.println(Game.ANSI_YELLOW + c.getName() + Game.ANSI_RESET + " is dead.");
-            c.isAlive = false;
+    private void calculateDamage(CharacterRPG character, int damageRoll) {
+        character.setHP(character.getHP() - damageRoll);
+        if(character.getHP() <= 0){
+            System.out.println(Game.ANSI_YELLOW + character.getName() + Game.ANSI_RESET + " is dead.");
+            character.isAlive = false;
         }
     }
 
@@ -287,7 +350,7 @@ public class CharacterRPG {
         return false;
     }
 
-    public boolean hasItem(Item item){
+    public boolean hasItem(LootableItem item){
         return inventory.containsKey(item);
     }
 
@@ -313,7 +376,7 @@ public class CharacterRPG {
         throw new NoSuchItemException("Not enough " + item.getName() + ("s"));
     }
 
-    public void addItem(Item i){
+    public void addItem(LootableItem i){
         System.out.println(Game.ANSI_YELLOW + this.getName() + Game.ANSI_RESET + " received "
                 + Game.ANSI_PURPLE + i.getArticle() + " " + i.getName() + Game.ANSI_RESET);
         if(hasItem(i)){
@@ -348,7 +411,7 @@ public class CharacterRPG {
     public void useItem(LootableItem i, CharacterRPG target) throws Exception {
         if(i instanceof Weapon)
             throw new Exception("This item cannot be used.");
-        if(hasItem((Item) i)){
+        if(hasItem(i)){
             int nb = inventory.get(i);
             nb--;
             ((Item) i).applyEffects(this, target);
@@ -363,8 +426,14 @@ public class CharacterRPG {
             System.out.println(Game.ANSI_YELLOW + this.getName() + Game.ANSI_RESET + " doesn't have any " + Game.ANSI_PURPLE + i.getName() + Game.ANSI_RESET);
     }
 
-    public LootableItem getRandomizedLoot(){
-        return lootTable.get(Main.dice.nextInt(lootTable.size()));
+    public LootableItem getRandomizedLoot() throws NoSuchItemException {
+        if(!lootTable.isEmpty()){
+            int indexOfLootedItem = Main.dice.nextInt(lootTable.size());
+            LootableItem lootedItem = lootTable.get(indexOfLootedItem);
+            lootTable.remove(indexOfLootedItem);
+            return lootedItem;
+        }
+        throw new NoSuchItemException("There is no more item to loot.");
     }
 
     public void addItemToLootTable(LootableItem i){

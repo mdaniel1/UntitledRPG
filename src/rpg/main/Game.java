@@ -41,8 +41,11 @@ public class Game {
             enableColors();
         }
 
-        CharacterRPG test = new CharacterRPG("Innoxia", 50, 50, 6, "He", "");
-        CharacterRPG test2 = new CharacterRPG("Swarm of bugs", 20, 20, 3, "They", "The");
+        CharacterRPG test = new CharacterRPG("Innoxia", 50, 50, 6, "She", "");
+        CharacterRPG test2 = new CharacterRPG("Swarm of bugs", 20, 20, 3, "It", "The");
+        test2.addItemToLootTable(ItemList.SMALL_HEALTH_POTION);
+        test2.addItemToLootTable(ItemList.MEDIUM_HEALTH_POTION);
+        test2.addItemToLootTable(ItemList.BIG_HEALTH_POTION);
 
         test.addSpell(SpellList.HEAL_BASIC);
         test.addItem(ItemList.SMALL_HEALTH_POTION);

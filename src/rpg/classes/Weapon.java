@@ -20,6 +20,11 @@ public class Weapon implements LootableItem {
         return name;
     }
 
+    @Override
+    public String getArticle() {
+        return "the";
+    }
+
     public void setName(String name) {
         this.name = name;
     }
